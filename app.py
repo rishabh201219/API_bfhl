@@ -1,10 +1,8 @@
-
-from flask import Flask, render_template, request
 from flask import Flask, render_template, request
 import re
 from datetime import datetime
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 @app.route("/")
 def home():
@@ -22,10 +20,7 @@ def operate():
         arr = arr.split(" ")
         
         dob = dob.replace("-","")
-        year = dob[:4]
-        month = dob[4:6]
-        day = dob[6:8]
-        dob = day+month+year
+        
         user_id = str(name + "_" + dob)
         result=[]
         even=[]
@@ -50,5 +45,5 @@ def operate():
             return render_template("home.html", Status=status)
     return render_template("home.html")
             
-if _name_ == "_main_":
+if __name__ == "__main__":
     app.run(debug=True)
